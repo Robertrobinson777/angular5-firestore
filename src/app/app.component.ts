@@ -3,9 +3,9 @@ import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument 
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Observable } from 'rxjs/Observable';
 
-interface User {
-  name: string;
-}
+// interface User {
+//   name: string;
+// }
 
 @Component({
   selector: 'app-root',
@@ -14,17 +14,11 @@ interface User {
 })
 export class AppComponent {
   title = 'app';
-  userCol: AngularFirestoreCollection<User>;
-  users: Observable<User[]>;
+  // userCol: AngularFirestoreCollection<User>;
+  users: Observable<any[]>;
 
   constructor(private db: AngularFirestore) {
-   
-  }
-
-  ngOnInit(){
-    this.userCol = this.db.collection('users');
-    this.users = this.userCol.valueChanges();
-    
+    this.users = db.collection('users').valueChanges();
   }
 
 }
